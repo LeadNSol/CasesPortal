@@ -100,6 +100,8 @@
                                 <option value="Lower Dir">Lower Dir</option>
                                 <option value="Upper Dir">Upper Dir</option>
                                 <option value="Swat">Swat</option>
+                                <option value="Peshawar">Peshawar</option>
+                                <option value="Mardan">Mardan</option>
                             </select>
 
                         </div>
@@ -214,12 +216,12 @@
     $("#starting_date").flatpickr({
         altInput: false,
         altFormat: "F j, Y",
-        dateFormat: "d - M - Y",
+        dateFormat: "d-M-Y",
     });
     $("#ending_date_input").flatpickr({
         altInput: false,
         altFormat: "F j, Y",
-        dateFormat: "d - M - Y",
+        dateFormat: "d-M-Y",
     });
 
 </script>

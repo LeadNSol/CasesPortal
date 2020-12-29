@@ -122,4 +122,15 @@ class User extends CI_Model
 
         return false;
     }
+
+    function insertCaseHearingDetails($data)
+    {
+        if ($this->db->insert('case_hearing', $data)) {
+            return true;
+        }
+
+        return false;
+    }
+
+
 }

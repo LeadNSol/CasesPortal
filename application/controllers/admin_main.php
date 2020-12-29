@@ -3,7 +3,7 @@
 
 class Admin_main extends CI_Controller
 {
-     function __construct()
+    function __construct()
     {
         //echo "Prak"; exit;
         parent::__construct();
@@ -15,29 +15,26 @@ class Admin_main extends CI_Controller
     {
 
 
-        if($this->input->server('REQUEST_METHOD') === 'POST')
-        {
+        if ($this->input->server('REQUEST_METHOD') === 'POST') {
 
             $user_email = $this->input->post('email');
             $password = md5($this->input->post('password'));
 
 
-            $is_valid = $this->User->userLogin($user_email,$password);
+            $is_valid = $this->User->userLogin($user_email, $password);
 
-            if(!empty($is_valid))
-            {
+            if (!empty($is_valid)) {
 
                 redirect('go_home');
-            }
-            else // incorrect username or password
+            } else // incorrect username or password
             {
                 //echo "called";
-                $data['flash_message'] =FALSE;
+                $data['flash_message'] = FALSE;
                 //$this->load->view('');
             }
         }
-            $data['site_logo'] = $this->User->getSiteLogo();
-            $this->load->view('admin/login', $data);
+        $data['site_logo'] = $this->User->getSiteLogo();
+        $this->load->view('admin/login', $data);
 
 
     }
@@ -45,11 +42,10 @@ class Admin_main extends CI_Controller
     function go_home()
     {
         //$this->load->model('User');
-        $userdata=$this->session->all_userdata();
-        @$user_type=$userdata['user_type'];
-        @$user_id=$userdata['id'];
-        if($user_id=='')
-        {
+        $userdata = $this->session->all_userdata();
+        @$user_type = $userdata['user_type'];
+        @$user_id = $userdata['id'];
+        if ($user_id == '') {
             redirect('admin_main');
         }
 
@@ -58,14 +54,50 @@ class Admin_main extends CI_Controller
         $this->load->view('includes/template', $data);
     }
 
-    public function add_new_case(){
+    public function add_new_case()
+    {
 
         $data['main_content'] = 'admin/add_new_case';
         $this->load->view('includes/template', $data);
     }
 
-    public function submit_case_details(){
+    public function submit_case_details()
+    {
 
+        $userdata = $this->session->all_userdata();
+        @$user_id = $userdata['id'];
+        if ($user_id == '') {
+            redirect(base_url());
+        }
+
+
+        $duration = "0";
+        $cases_arr = array(
+            'case_name' => $this->input->post('case_name'),
+            'case_type' => $this->input->post('case_type'),
+            'against' => $this->input->post('case_against'),
+            'lawyer_name' => $this->input->post('lawyer_name'),
+            'lawyer_contact_no' => $this->input->post('phone'),
+            'case_district' => $this->input->post('case_district'),
+            'region' => $this->input->post('case_region'),
+            'starting_date' => $this->input->post('starting_date'),
+            'ending_date' => $this->input->post('ending_date'),
+            'duration' => $this->$duration,
+            'status' => $this->input->post('case_status'),
+            'remarks' => $this->input->post('remarks'));
+
+        if ($this->User->insertCaseDetails($cases_arr)) {
+            $data['flash_message'] = TRUE;
+            $this->add_new_case();
+        } else {
+
+            $data['flash_message'] = FALSE;
+        }
+
+    }
+
+    public function add_case_hearing()
+    {
         $userdata=$this->session->all_userdata();
         @$user_id=$userdata['id'];
         if($user_id=='')
@@ -74,99 +106,72 @@ class Admin_main extends CI_Controller
         }
 
 
-        $duration = "0";
-        $cases_arr=array(
-            'case_name'=>$this->input->post('case_name'),
-            'case_type'=>$this->input->post('case_type'),
-            'against'=>$this->input->post('case_against'),
-            'lawyer_name'=>$this->input->post('lawyer_name'),
-            'lawyer_contact_no'=>$this->input->post('phone'),
-            'case_district'=>$this->input->post('case_district'),
-            'region'=>$this->input->post('case_region'),
-            'starting_date'=>$this->input->post('starting_date'),
-            'ending_date'=>$this->input->post('ending_date'),
-            'duration'=>$this->$duration,
-            'status'=>$this->input->post('case_status'),
-            'remarks'=>$this->input->post('remarks'));
-
-        if($this->User->insertCaseDetails($cases_arr))
-        {
-            $data['flash_message'] =TRUE;
-            $this->add_new_case();
-        }
-        else{
-
-            $data['flash_message'] =FALSE;
-        }
-
-    }
-
-    public function add_case_hearing(){
-
-         if ($this->input->server('REQUEST_METHOD')=='POST'){
-
-
-         }
-
         $data['cases'] = $this->User->getCasesListDetails();
         $data['main_content'] = 'admin/add_case_hearing';
         $this->load->view('includes/template', $data);
 
     }
 
-    function update_multiple_images()
-    {
+    public function add_case_hearing_details(){
 
-        if($_FILES["case_image"]["name"] != '')
-        {
-            $config["upload_path"] = '../uploads/images/';
-            $config["allowed_types"] = 'gif|jpg|png';
-            $this->load->library('upload', $config);
-            $this->upload->initialize($config);
-            //$img_array=array();
+        if (!empty($_FILES['case_images']['name']) && count(array_filter($_FILES['case_images']['name'])) > 0) {
+            $imagesCount = count($_FILES['case_images']['name']);
 
-            for($count = 0; $count<count($_FILES["case_image"]["name"]); $count++)
-            {
-                $time=time();
-                // $date = date("Y-m-d H:i:s");
-                $_FILES["case_image"]["name"] = $time."_".$_FILES["case_image"]["name"][$count];
-                $_FILES["case_image"]["type"] = $_FILES["case_image"]["type"][$count];
-                $_FILES["case_image"]["tmp_name"] = $_FILES["case_image"]["tmp_name"][$count];
-                $_FILES["case_image"]["error"] = $_FILES["case_image"]["error"][$count];
-                $_FILES["case_image"]["size"] = $_FILES["case_image"]["size"][$count];
-                if($this->upload->do_upload('case_image'))
-                {
-                    $data = $this->upload->data();
-                    //array_push($img_array,$data["file_name"]);
+            for ($i = 0; $i < $imagesCount; $i++) {
+                $_FILES['file']['name'] = $_FILES['case_images']['name'][$i];
+                $_FILES['file']['type'] = $_FILES['case_images']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['case_images']['tmp_name'][$i];
+                $_FILES['file']['error'] = $_FILES['case_images']['error'][$i];
+                $_FILES['file']['size'] = $_FILES['case_images']['size'][$i];
 
+                // File upload configuration
+                $uploadPath = 'uploads/images/';
+                $config['upload_path'] = $uploadPath;
+                $config['allowed_types'] = 'jpg|jpeg|png|gif';
+                $config['max_size'] = '5000'; // max_size in kb
+                //$config['max_width'] = '1024';
+                //$config['max_height'] = '768';
+                $config['file_name'] = $_FILES['case_images']['name'][$i];
+
+                // Load and initialize upload library
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+
+                // Upload file to server
+                if ($this->upload->do_upload('file')) {
+
+                    // Uploaded file data
+                    $fileData = $this->upload->data();
+                    $uploadData[$i] = $fileData['file_name'];
+                    //$uploadData[$i]['uploaded_on'] = date("Y-m-d H:i:s");
+
+                } else {
+                    $data['flash_message'] = FALSE;
                 }
             }
-            echo $eeeeee =json_encode($img_array);exit;
-            $add_img=array(
-                "$image_id"=>$data["file_name"]
-            );
-            $new_imag = $data["file_name"];
-            foreach($old_data as $key=>$v)
-            {
-                if($key==$image_id)
-                {
-                    $old_data[$key]=$new_imag;
+            if (!empty($uploadData)) {
+                $imageFiles = json_encode($uploadData);
+
+                $hearing_arr = array(
+                    'case_id' => $this->input->post('case_id'),
+                    'hearing_date' => $this->input->post('hearing_date'),
+                    'remarks' => $this->input->post('remarks'),
+                    'images' => $imageFiles
+                );
+
+                if ($this->User->insertCaseHearingDetails($hearing_arr)) {
+                    $data['flash_message'] = TRUE;
+                    $this->add_case_hearing();
+                } else {
+                    $data['flash_message'] = FALSE;
                 }
+
+            } else{
+                $data['flash_message'] = FALSE;
             }
-
-            //print_r($old_data);
-            $new_update = json_encode($old_data);
-            $upadte_data=array(
-                'product_image'=>$new_update
-            );
-            print_r($upadte_data);//exit;
-
-            //$new_array=perform_changes_on($aaaa,$add_img);
-            //print_r($new_array);
-
+        }else{
+            $data['flash_message'] = FALSE;
         }
-
-
     }
 
 }

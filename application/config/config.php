@@ -19,8 +19,8 @@
 // $config['site_base_url']='http://shineindiadigilearn.com/';
 
 
-$config['base_url']	= 'http://localhost:8080/CourtCasePortal/';
-$config['site_base_url']='http://localhost:8080/CourtCasePortal/';
+$config['base_url']	= 'http://localhost:8080/CasesPortal/';
+$config['site_base_url']='http://localhost:8080/CasesPortal/';
 
 /*$config['base_url']	= 'http://www.webhawkstechnology.com/dealsheal/admin';
 $config['site_base_url']	= 'http://www.webhawkstechnology.com/dealsheal';*/

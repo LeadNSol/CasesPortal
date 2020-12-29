@@ -50,6 +50,7 @@ $route['add_new_case'] = 'admin_main/add_new_case';
 $route['submit_case_details'] = 'admin_main/submit_case_details';
 
 $route['add_case_hearing'] = 'admin_main/add_case_hearing';
+$route['add_case_hearing_details'] = 'admin_main/add_case_hearing_details';
 
 
 

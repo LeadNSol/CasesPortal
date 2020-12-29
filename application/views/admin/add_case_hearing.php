@@ -35,7 +35,7 @@
                     <br/>
                     <?php
                     $attributes = array('class' => 'form-horizontal form-label-left', 'id' => 'demo-form2');
-                    echo form_open_multipart('add_case_hearing/', $attributes);
+                    echo form_open_multipart('add_case_hearing_details/', $attributes);
                     ?>
 
 
@@ -108,6 +108,6 @@
     $("#hearing_date").flatpickr({
         altInput: false,
         altFormat: "F j, Y",
-        dateFormat: "d - M - Y",
+        dateFormat: "d-M-Y",
     });
 </script>
