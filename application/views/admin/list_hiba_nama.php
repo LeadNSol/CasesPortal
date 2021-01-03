@@ -1,3 +1,4 @@
+<div class="right_col" role="main">
 <div role="main">
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -20,7 +21,6 @@
 <!--                            <th class="c_clg">Lawyer</th>-->
 <!--                            <th class="c_clg">Starting Date</th>-->
 <!--                            <th class="c_clg">Duration</th>-->
-                            <th class="c_clg">Status</th>
                             <th style="width:120px;text-align: center;">Action</th>
                         </tr>
                         </thead>
@@ -37,7 +37,6 @@
 <!--                            <td>--><?php //echo $value['lawyer_name']; ?><!--</td>-->
 <!--                            <td>--><?php //echo $value['starting_date']; ?><!--</td>-->
 <!--                            <td>--><?php //echo $value['duration']; ?><!--</td>-->
-                            <td><?php echo $value['status']; ?></td>
                             <td>
                                 <div class="Action">
                                     <a href="<?php echo base_url();?>edit_exam_subject/<?php echo $value['id']; ?>"><span style="margin-right: 13px;"><i class="fa fa-pencil" aria-hidden="true"></i></span></a>

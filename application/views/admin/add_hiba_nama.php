@@ -65,9 +65,9 @@
 
                     <div class="form-group profile_ed_f_rm" id="remarks">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12 view_le_nme"
-                               for="starting-date">Remarks</label>
+                               for="starting-date">Remarks<span class="required"> *</span></label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <textarea id="remarks" name="remarks" placeholder="case remark or details description"
+                            <textarea id="remarks" name="remarks" placeholder="hiba nama remark or details description"
                                       class="form-control col-md-7 col-xs-12"></textarea>
                         </div>
                     </div>
