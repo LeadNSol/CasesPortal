@@ -89,9 +89,9 @@
                                         <td><?php echo $value['status']; ?></td>
                                          <td>
                                             <div class="Action">
-                                                <a href="<?php echo base_url();?>edit_exam_subject/<?php echo $value['id']; ?>"><span style="margin-right: 13px;"><i class="fa fa-pencil" aria-hidden="true"></i></span></a>
-                                                <a href="<?php echo base_url();?>edit_exam_subject/<?php echo $value['id']; ?>"><span style="margin-right: 13px;"><i class="fa fa-desktop" aria-hidden="true"></i></span></a>
-                                                <a href="<?php echo base_url();?>delete_exam_subject/<?php echo $value['id']?>"  onClick=" return confirm('Are You Sure to Delete this Case?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                <a href="<?php echo base_url();?>edit_case/<?php echo $value['id']; ?>" title="Edit"><span style="margin-right: 13px;"><i class="fa fa-pencil" aria-hidden="true"></i></span></a>
+                                                <a href="<?php echo base_url();?>detail_case/<?php echo $value['id']; ?>" title="Details"><span style="margin-right: 13px;"><i class="fa fa-desktop" aria-hidden="true"></i></span></a>
+                                                <a href="<?php echo base_url();?>delete_case/<?php echo $value['id']?>"  onClick=" return confirm('Are You Sure to Delete this Case?')" title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                             </div>
                                         </td>
                                         </tr>

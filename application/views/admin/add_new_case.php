@@ -37,6 +37,7 @@
                     $attributes = array('class' => 'form-horizontal form-label-left', 'id' => 'demo-form2');
                     echo form_open_multipart('submit_case_details', $attributes);
                     ?>
+
                     <div class="form-group profile_ed_f_rm">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12 view_le_nme" for="case-name">Case
                             name<span class="required">*</span>
@@ -89,23 +90,81 @@
                                    required="required" class="form-control col-md-7 col-xs-12" value="">
                         </div>
                     </div>
+
+
+                    <!--          province-->
+
+
+                    <script>
+                        function random()
+                        {
+                            var a=document.getElementById('input').value;
+                            if(a=="Lower Dir")
+                            {
+                                var array=["Select a Value","Timergara","Balambat","Lal Qala","Samarbagh"];
+                            }
+                            else if(a=="Upper Dir")
+                            {
+                                var array=["Select a Value","Wari","Barawal","Sheringal"];
+                            }
+                            // else if(b=="Sindh")
+                            // {
+                            //     var array=["Select a Value","karachi","Multan","quata"];
+                            // }
+                            else
+                            {
+                                var array=[];
+                            }
+                            var string="";
+                            for(i=0;i<array.length;i++)
+                            {
+                                string=string+"<option>"+array[i]+"</option>";
+                            }
+
+                            string="<select name='cases-tehsil' class='form-control'>"+string+"</select>";
+                            document.getElementById('output').innerHTML=string;
+                        }
+
+
+                    </script>
+
                     <div class="form-group profile_ed_f_rm">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12 view_le_nme" for="cases-district">
                             Case District<span class="required">*</span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <select class="form-control col-md-7 col-xs-12" name="case_district" required="required"
-                                    id="case_type">
-                                <option value="">Select District</option>
-                                <option value="Lower Dir">Lower Dir</option>
-                                <option value="Upper Dir">Upper Dir</option>
-                                <option value="Swat">Swat</option>
-                                <option value="Peshawar">Peshawar</option>
-                                <option value="Mardan">Mardan</option>
+                                    id="input" onchange="random()">
+                                <option value="select_actor">Select District</option>
+                                <option>Lower Dir</option>
+                                <option>Upper Dir</option>
+<!--                                <option value="Swat">Swat</option>-->
+<!--                                <option value="Peshawar">Peshawar</option>-->
+<!--                                <option value="Mardan">Mardan</option>-->
                             </select>
 
                         </div>
                     </div>
+
+
+<!--                    tehil-->
+                    <div class="form-group profile_ed_f_rm">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12 view_le_nme" for="cases-district">
+                            Case Tehsil<span class="required">*</span>
+                        </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <div id="output">
+                            <select class="form-control col-md-7 col-xs-12" name="cases-tehsil" required="required"
+                                    id="output">
+                                <option value="select_actor">Select Tehsil</option>
+
+                            </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+
                     <div class="form-group profile_ed_f_rm">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12 view_le_nme"
                                for="first-name">Area / Region<span class="required">*</span>
@@ -121,6 +180,8 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12 view_le_nme" for="cases-status">
                             Case Current Status<span class="required">*</span>
                         </label>
+
+
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <select class="form-control col-md-7 col-xs-12" name="case_status" required="required"
                                     id="case_status">

@@ -46,11 +46,21 @@ $route['admin_main'] = 'admin_main/index';
 $route['login'] = 'admin_main/login';
 $route['go_home'] = 'admin_main/go_home';
 
-$route['add_new_case'] = 'admin_main/add_new_case';
+$route['add_case'] = 'admin_main/add_case';
+
+$route['add_new'] = 'Case_ci/new_case';
+
 $route['submit_case_details'] = 'admin_main/submit_case_details';
 
 $route['add_case_hearing'] = 'admin_main/add_case_hearing';
 $route['add_case_hearing_details'] = 'admin_main/add_case_hearing_details';
+
+$route['edit_case/(:any)'] = 'admin_main/case_detail/$1';
+
+$route['add_hiba_nama'] = 'admin_main/add_hiba_nama';
+$route['add_hiba_nama_details'] = 'admin_main/add_hiba_nama_details';
+
+
 
 
 
