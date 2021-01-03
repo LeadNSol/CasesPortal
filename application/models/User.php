@@ -150,4 +150,14 @@ class User extends CI_Model
         return $data;
     }
 
+    function getHibaNamaListDetails()
+    {
+        $this->db->select('*');
+        $this->db->from('hiba_nama');
+        $query_active_data = $this->db->get();
+        $data = $query_active_data->result_array();
+        return $data;
+    }
+
+
 }

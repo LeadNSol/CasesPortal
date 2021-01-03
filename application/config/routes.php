@@ -60,6 +60,8 @@ $route['edit_case/(:any)'] = 'admin_main/case_detail/$1';
 $route['add_hiba_nama'] = 'admin_main/add_hiba_nama';
 $route['add_hiba_nama_details'] = 'admin_main/add_hiba_nama_details';
 
+$route['list_hiba_nama'] = 'admin_main/list_hiba_nama';
+
 
 
 
