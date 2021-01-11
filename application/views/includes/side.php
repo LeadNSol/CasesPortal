@@ -27,6 +27,7 @@
     <link href="<?php echo base_url(); ?>css/custom.min.css" rel="stylesheet">
 
     <link href="<?php echo base_url(); ?>css/ubk_style.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>css/carousel_style.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>js/jquery.min.js" rel="stylesheet">
     <link href="<?php echo base_url(); ?>js/office.js" rel="stylesheet">
     <!-- datepicker flatpickr -->
@@ -67,6 +68,9 @@
                                         <a href="<?php echo base_url(); ?>add_case_hearing">Add Case Hearing</a>
                                     </li>
                                     <li>
+                                        <a href="<?php echo base_url(); ?>load_case_images_view">Add Case Files (Images)</a>
+                                    </li>
+                                    <li>
                                         <a href="<?php echo base_url() ?>go_home">List of Cases</a>
                                     </li>
                                 </ul>
@@ -83,11 +87,11 @@
                                     <li>
                                         <a href="<?php echo base_url() ?>list_hiba_nama">List of Hiba Nama's</a>
                                     </li>
-
+                                    <li>
+                                        <a href="<?php echo base_url() ?>list_hiba_nama">Properties</a>
+                                    </li>
                                 </ul>
                             </li>
-
-
                         </ul>
                     </div>
 

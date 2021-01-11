@@ -40,6 +40,7 @@
 $route['default_controller'] = 'admin_main/index';
 $route['404_override'] = '';
 $route['main/(:any)'] = "main/$1";
+
 /*admin*/
 $route['admin_main'] = 'admin_main/index';
 
@@ -49,8 +50,46 @@ $route['go_home'] = 'admin_main/go_home';
 $route['add_new_case'] = 'admin_main/add_new_case';
 $route['submit_case_details'] = 'admin_main/submit_case_details';
 
+$route['view_case_details/(:any)'] = 'admin_main/view_case_details/$1';
+
+/*
+ * delete case
+ * */
+$route['delete_case/(:any)'] = 'admin_main/delete_case/$1';
+
+/*
+ * case Hearing
+ * */
 $route['add_case_hearing'] = 'admin_main/add_case_hearing';
 $route['add_case_hearing_details'] = 'admin_main/add_case_hearing_details';
+
+
+/*
+ * Case Images or Files
+ * */
+
+$route['load_case_images_view'] = 'admin_main/load_case_images_view';
+$route['submit_case_images'] = 'admin_main/submit_case_images';
+
+
+
+/*
+ * Hiba Nama
+ *
+ * */
+
+$route['add_new_hiba_nama'] = 'Property_ci/load_hiba_nama';
+$route['add_hiba_nama_details'] = 'Property_ci/add_hiba_nama_details';
+
+$route['list_hiba_nama'] = 'Property_ci/list_hiba_nama_details';
+
+    // edit and update
+
+$route['edit_hiba_nama/(:any)'] = 'Property_ci/edit_hiba_nama/$1';
+$route['update_hiba_nama/(:any)'] = 'Property_ci/update_hiba_nama/$1';
+
+
+
 
 
 

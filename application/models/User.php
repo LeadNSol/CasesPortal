@@ -60,6 +60,10 @@ class User extends CI_Model
 
     }
 
+
+    /*
+     * Home dashboard Data
+     * */
     function getAdminData()
     {
         //echo 1;exit;
@@ -70,7 +74,6 @@ class User extends CI_Model
         $query_row_data = $this->db->get();
         return $admin_option = $query_row_data->result_array();
     }
-
 
     function getAllActiveCases()
     {
@@ -114,6 +117,35 @@ class User extends CI_Model
         return $data;
     }
 
+    /*
+     * Cases details and hearing details
+     * */
+    function getCasesDetailsById($id)
+    {
+        $this->db->select('*');
+        $this->db->from('cases');
+        $this->db->where('id', $id);
+        $query_active_data = $this->db->get();
+        $data = $query_active_data->result_array();
+        return $data;
+    }
+
+    function getHearingDetailsByCaseId($caseId){
+        $this->db->select('*');
+        $this->db->from('case_hearing');
+        $this->db->where('case_id', $caseId);
+        $query_active_data = $this->db->get();
+        $data = $query_active_data->result_array();
+        return $data;
+
+    }
+
+
+
+    /*
+     * cases
+     * */
+
     function insertCaseDetails($data)
     {
         if ($this->db->insert('cases', $data)) {
@@ -123,6 +155,20 @@ class User extends CI_Model
         return false;
     }
 
+
+    function deleteCaseById($id)
+    {
+        $this->db->where('id', $id);
+        if ($this->db->delete('cases')) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /*
+     * case hearing
+     * */
     function insertCaseHearingDetails($data)
     {
         if ($this->db->insert('case_hearing', $data)) {
@@ -133,4 +179,29 @@ class User extends CI_Model
     }
 
 
+    /*
+     *
+     * case images
+     * */
+
+
+    function insertCaseImages($data){
+        if ($this->db->insert('image_files', $data)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    function getImagesByCaseId($id){
+
+        //$where = "image_of ='Cases' AND image_of_id='".$id."' ";
+        $this->db->select('*');
+        $this->db->where('image_of','Cases');
+        $this->db->where('image_of_id',$id);
+        $this->db->from('image_files');
+        $query_active_data = $this->db->get();
+        $data = $query_active_data->result_array();
+        return $data;
+    }
 }

@@ -10,7 +10,7 @@
 
   <!-- jQuery -->
 	<script src="<?php echo base_url();?>js/jquery.knob.js"></script>
-	<!-- jQuery File Upload Dependencies -->
+		<!-- jQuery File Upload Dependencies -->
 	<script src="<?php echo base_url();?>js/jquery.ui.widget.js"></script>
 	<script src="<?php echo base_url();?>js/jquery.iframe-transport.js"></script>
 	<script src="<?php echo base_url();?>js/jquery.fileupload.js"></script>

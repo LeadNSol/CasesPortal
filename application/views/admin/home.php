@@ -5,20 +5,20 @@
    $all_pending_cases = $this->User->getAllPendingCases();
 
 
-?>	
+?>
 <script src="https://code.highcharts.com/modules/data.js"></script>
 <script src="https://code.highcharts.com/modules/drilldown.js"></script>
 
 
 
         <!-- top navigation -->
-        
+
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main">        
+        <div class="right_col" role="main">
           <div class="row">
-		 
+
             <div class="vistr_d">
                 <div class="col-sm-4">
 					<div class="all_user_d clr_1">
@@ -26,24 +26,24 @@
 						   <span><?php echo $all_active_cases;?></span>
 					 </div>
                  </div>
-				 
+
 				    <div class="col-sm-4">
 					<div class="all_user_d clr_2">
 					     <h2>Completed Cases</h2>
 						   <span><?php echo $all_completed_cases;?></span>
 					 </div>
                  </div>
-				 
+
 				    <div class="col-sm-4">
 					<div class="all_user_d clr_3">
 					     <h2>Pending Cases</h2>
 						   <span><?php echo $all_pending_cases;?></span>
 					 </div>
                  </div>
-				 
+
 				 <div class="clearfix"></div>
               </div>
-			   
+
           </div>
             <div role="main">
                 <div class="row">
@@ -63,13 +63,13 @@
                                         <th class="c_clg">Case Name</th>
                                         <th class="c_clg">Case District</th>
                                         <th class="c_clg">Region</th>
-                                        <th class="c_clg">Case Type</th>
+                                       <th class="c_clg">Case Type</th>
                                         <th class="c_clg">Against</th>
                                         <th class="c_clg">Lawyer</th>
                                         <th class="c_clg">Starting Date</th>
                                         <th class="c_clg">Duration</th>
                                         <th class="c_clg">Status</th>
-                                        <th style="width:120px;text-align: center;">Action</th>
+                                        <th class="c_clg">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -81,7 +81,7 @@
                                         <td><?php echo $value['case_name']; ?></td>
                                         <td><?php echo $value['case_district']; ?></td>
                                         <td><?php echo $value['region']; ?></td>
-                                        <td><?php echo $value['case_type']; ?></td>
+                                       <td><?php echo $value['case_type']; ?></td>
                                         <td><?php echo $value['against']; ?></td>
                                         <td><?php echo $value['lawyer_name']; ?></td>
                                         <td><?php echo $value['starting_date']; ?></td>
@@ -89,9 +89,9 @@
                                         <td><?php echo $value['status']; ?></td>
                                          <td>
                                             <div class="Action">
-                                                <a href="<?php echo base_url();?>edit_exam_subject/<?php echo $value['id']; ?>"><span style="margin-right: 13px;"><i class="fa fa-pencil" aria-hidden="true"></i></span></a>
-                                                <a href="<?php echo base_url();?>edit_exam_subject/<?php echo $value['id']; ?>"><span style="margin-right: 13px;"><i class="fa fa-desktop" aria-hidden="true"></i></span></a>
-                                                <a href="<?php echo base_url();?>delete_exam_subject/<?php echo $value['id']?>"  onClick=" return confirm('Are You Sure to Delete this Case?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                <a href="<?php echo base_url();?>view_case_details/<?php echo $value['id']; ?>" title="details"><span style="margin-right: 13px;"><i class="fa fa-desktop" aria-hidden="true"></i></span></a>
+                                                <a href="<?php echo base_url();?>delete_case/<?php echo $value['id']?>" title="delete"
+                                                   onClick=" return confirm('Are You Sure to Delete this Case?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                             </div>
                                         </td>
                                         </tr>
@@ -137,7 +137,7 @@
        setTimeout("preventback()",0);
        window.onunload= function() { null };
 </script>
-		   
+
         <!-- footer content -->
  
 
