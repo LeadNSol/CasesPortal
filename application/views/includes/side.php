@@ -62,7 +62,10 @@
                                 </a>
                                 <ul class="nav child_menu" style="display: none;">
                                     <li>
-                                        <a href="<?php echo base_url(); ?>add_new_case">Add New Case</a>
+                                        <a href="<?php echo base_url(); ?>add_case">Add New Case</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo base_url(); ?>add_new">New Case</a>
                                     </li>
                                     <li>
                                         <a href="<?php echo base_url(); ?>add_case_hearing">Add Case Hearing</a>
@@ -82,7 +85,7 @@
                                 </a>
                                 <ul class="nav child_menu" style="display: none;">
                                     <li>
-                                        <a href="<?php echo base_url(); ?>add_new_hiba_nama">Add Hiba Nama</a>
+                                        <a href="<?php echo base_url(); ?>add_hiba_nama">Add Hiba Nama</a>
                                     </li>
                                     <li>
                                         <a href="<?php echo base_url() ?>list_hiba_nama">List of Hiba Nama's</a>

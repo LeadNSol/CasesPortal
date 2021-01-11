@@ -178,6 +178,33 @@ class User extends CI_Model
         return false;
     }
 
+    function insertHibaNamaDetails($data)
+    {
+        if ($this->db->insert('hiba_nama', $data)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function loadCaseDetailsById($id){
+        $this->db->select('*');
+        $this->db->from('cases');
+        $this->db->where('id',$id);
+        $query_active_data = $this->db->get();
+        $data = $query_active_data->result_array();
+        return $data;
+    }
+
+    function getHibaNamaListDetails()
+    {
+        $this->db->select('*');
+        $this->db->from('hiba_nama');
+        $query_active_data = $this->db->get();
+        $data = $query_active_data->result_array();
+        return $data;
+    }
+
 
     /*
      *
